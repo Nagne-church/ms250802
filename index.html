@@ -252,13 +252,18 @@
 
                     const data = await response.json();
 
-                    // [수정된 부분] 서버 응답 키를 'text'로 변경하고, 해당 키가 존재하는지 확인
-                    if (data && typeof data.text === 'string') {
-                        answerText.innerHTML = data.text.replace(/\n/g, '<br>');
+                    // [최종 수정] Gemini API의 표준 응답 구조를 직접 파싱
+                    let responseText = '';
+                    if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text) {
+                        responseText = data.candidates[0].content.parts[0].text;
+                    }
+
+                    if (responseText) {
+                        answerText.innerHTML = responseText.replace(/\n/g, '<br>');
                     } else {
-                        // 예상치 못한 응답 형식에 대한 에러 처리
-                        console.error('Unexpected server response format:', data);
-                        throw new Error('서버로부터 받은 응답의 형식이 올바르지 않습니다.');
+                        // 정상 응답을 받았으나, 예상 경로에 텍스트가 없는 경우
+                        console.error('Unexpected server response structure:', data);
+                        throw new Error('서버 응답에서 유효한 답변 텍스트를 추출할 수 없습니다.');
                     }
                     
                     answerContainer.classList.remove('hidden');
