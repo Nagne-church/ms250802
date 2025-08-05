@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콘텐츠 요약 및 Q&A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        body {
+            font-family: 'Pretendard', sans-serif;
+            word-break: keep-all; /* 단어 단위 줄바꿈으로 가독성 향상 */
+        }
+        .prose strong {
+            font-weight: 600; /* 조금 더 부드러운 bold 처리 */
+        }
+        .prose ul {
+            list-style-position: outside;
+            padding-left: 1.25rem;
+        }
+        .prose li {
+            padding-left: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900">수업 노트: 둘째 계명에서 금지하는 죄 (출 20:4-6)</h1>
+            <p class="text-lg text-gray-600 mt-2">십계명 강해 핵심 내용 정리</p>
+        </header>
+
+        <main class="bg-white p-6 md:p-10 rounded-lg shadow-lg">
+
+            <div id="summary-content">
+                <section class="mb-10 chapter-section">
+                    <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-indigo-700">Chapter 1: 예배의 규정적 원리와 우상 제작 금지</h2>
+                    <div class="prose max-w-none text-lg leading-relaxed">
+                        <p class="mb-4">두 번째 계명("너를 위하여 새긴 우상을 만들지 말라")은 하나님을 예배하는 방식에 대한 근본적인 원칙을 제시하며, 금지되는 죄의 목록을 구체적으로 알려줍니다.</p>
+                        <h3 class="text-xl font-semibold mb-3">1. 하나님이 제정하지 않은 예배 방식의 죄</h3>
+                        <p class="mb-4">하나님께서 친히 제정하거나 명령하지 않으신 종교적 예배 방식을 인간이 임의로 고안하고, 의논하며, 명령하고, 사용하는 모든 행위는 죄에 해당합니다.</p>
+                        
+                        <h3 class="text-xl font-semibold mb-3">2. 예배의 규정적 원리 (The Regulative Principle of Worship)</h3>
+                        <p class="mb-4">개혁 신앙의 핵심 원리로, 예배의 모든 요소는 성경에 명시적으로 명령된 것만을 따라야 한다는 원칙입니다.</p>
+                        <ul class="list-disc space-y-2">
+                            <li><strong>해야 할 것:</strong> 하나님께서 성경을 통해 '하라'고 명하신 것만 행합니다.</li>
+                            <li><strong>하지 말아야 할 것 (1):</strong> 하나님께서 명시적으로 '하지 말라'고 금하신 것은 행하지 않습니다.</li>
+                            <li><strong>하지 말아야 할 것 (2):</strong> 가장 중요한 점으로, 하나님께서 '하라'고 <strong>명령하지 않으신 것</strong> 역시 임의로 행해서는 안 됩니다.</li>
+                        </ul>
+                    </div>
+                    <button class="ask-question-btn mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">이해를 돕는 질문하기</button>
+                </section>
+
+                <section class="mb-10 chapter-section">
+                    <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-indigo-700">Chapter 2: 거짓 종교 용납 및 하나님의 형상화 금지</h2>
+                    <div class="prose max-w-none text-lg leading-relaxed">
+                        <h3 class="text-xl font-semibold mb-3">1. 거짓 종교에 대한 태도</h3>
+                        <ul class="list-disc space-y-2">
+                            <li><strong>거짓 종교 용납의 죄:</strong> 거짓된 종교를 용납하는 것은 둘째 계명이 금하는 죄입니다. 이는 단순히 침묵하거나 방관하는 소극적 태도를 넘어섭니다.</li>
+                            <li><strong>적극적인 거부:</strong> 신앙적, 도덕적으로 동의할 수 없는 부분에 대해서는 '아니오'라고 분명히 말하며, 개인적으로 거짓된 종교 활동이나 의식에 참여하지 않아야 합니다. (사회적 배척과는 구별됨)</li>
+                        </ul>
+                        <h3 class="text-xl font-semibold mt-6 mb-3">2. 하나님 형상화 금지</h3>
+                        <ul class="list-disc space-y-2">
+                            <li><strong>내적/외적 형상화 금지:</strong> 성부, 성자, 성령 삼위일체 하나님의 일부 또는 전체를 마음속으로 상상하여 그리거나(내적 표상), 피조물의 형상으로 눈에 보이게 만드는(외적 표상) 모든 행위가 금지됩니다.</li>
+                            <li><strong>죄의 근원적 동기:</strong> 하나님을 가시적인 형태로 만들려는 시도는, 보이지 않는 무한한 하나님을 유한한 인간의 통제와 이해 속에 가두려는 교만한 심리에서 비롯됩니다.</li>
+                        </ul>
+                    </div>
+                    <button class="ask-question-btn mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">이해를 돕는 질문하기</button>
+                </section>
+
+                <section class="mb-10 chapter-section">
+                    <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-indigo-700">Chapter 3: 형상 숭배와 종교 다원주의 비판</h2>
+                    <div class="prose max-w-none text-lg leading-relaxed">
+                        <h3 class="text-xl font-semibold mb-3">1. 형상을 통한 예배 금지</h3>
+                        <ul class="list-disc space-y-2">
+                            <li><strong>직접 숭배 금지:</strong> 만들어진 형상(조각, 그림 등) 그 자체를 예배하는 행위는 명백한 우상숭배입니다.</li>
+                            <li><strong>간접 숭배 금지:</strong> 형상을 '통해서' 또는 '의지하여' 하나님께 예배하려는 모든 행위 역시 금지됩니다. 이는 하나님이 아닌 형상에 영적으로 종속될 위험을 내포합니다.</li>
+                            <li><strong>신앙 양심의 역할:</strong> 성경의 진리에 비추어 옳지 않다고 판단되면, 신앙 양심에 따라 단호히 거부해야 합니다.</li>
+                        </ul>
+                         <h3 class="text-xl font-semibold mt-6 mb-3">2. 거짓 신 표상 및 종교 다원주의</h3>
+                        <ul class="list-disc space-y-2">
+                            <li><strong>거짓 신 제작 및 숭배 금지:</strong> 거짓된 신들의 표상을 만들고, 그것에 절하며 섬기는 모든 행위는 금지됩니다.</li>
+                            <li><strong>종교 다원주의 비판:</strong> 각 종교가 나름의 방식으로 진리에 도달할 수 있다는 '종교 다원주의' 사상은, 유일한 진리이신 하나님을 부정하는 거짓된 가르침으로 간주됩니다.</li>
+                        </ul>
+                    </div>
+                    <button class="ask-question-btn mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">이해를 돕는 질문하기</button>
+                </section>
+
+                <section class="mb-10 chapter-section">
+                    <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-indigo-700">Chapter 4: 미신적 고안과 예배의 부패</h2>
+                    <div class="prose max-w-none text-lg leading-relaxed">
+                        <p class="mb-4">하나님의 예배를 변질시키는 모든 '미신적인 고안들'은 엄격히 금지됩니다. 이러한 고안들은 종종 다음과 같은 명분으로 정당화되지만 모두 죄에 해당합니다.</p>
+                        <ul class="list-disc space-y-2 mb-4">
+                            <li><strong>정당화의 명분:</strong> 고대성(오래된 전통), 관습, 경건(거룩해 보임), 선한 의도 등.</li>
+                            <li><strong>본질:</strong> 하나님의 예배를 부패하게 만들고, 성경이 명하지 않은 것을 더하거나(부가) 빼는(삭제) 모든 행위.</li>
+                        </ul>
+                        <h3 class="text-xl font-semibold mb-3">금지되는 미신적 행위의 예시</h3>
+                        <ul class="list-disc space-y-2">
+                            <li><strong>물건/의식 의존:</strong> 부적, 성물(聖物), 향, 특정 의식 등을 통해 신비한 힘이나 은혜를 얻으려는 행위. 이는 영혼을 미신에 구속시키는 결과를 낳습니다.</li>
+                            <li><strong>상징물의 올바른 이해:</strong> 십자가나 성경책 같은 상징물 자체가 신비한 힘을 가진 것이 아닙니다. 그 의미는 그것을 대하는 신앙적 행위와 내적 결단에 있으며, 상징물이 신앙의 본질을 대체해서는 안 됩니다.</li>
+                        </ul>
+                    </div>
+                    <button class="ask-question-btn mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">이해를 돕는 질문하기</button>
+                </section>
+                
+                <section class="chapter-section">
+                    <h2 class="text-2xl font-bold mb-4 border-b pb-2 text-indigo-700">Chapter 5: 성직 매매와 예배에 대한 올바른 태도</h2>
+                    <div class="prose max-w-none text-lg leading-relaxed">
+                        <h3 class="text-xl font-semibold mb-3">1. 성직 매매(Simony)의 죄</h3>
+                        <ul class="list-disc space-y-2">
+                            <li>교회의 직분이나 그에 따른 영적 특권을 돈을 주고 사는 행위는 심각한 죄입니다.</li>
+                            <li>교회 안에서 자신의 재력을 과시하거나 이용하여 영적인 영향력을 행사하려는 모든 시도 역시 성직 매매의 정신에 해당합니다.</li>
+                        </ul>
+                        <h3 class="text-xl font-semibold mt-6 mb-3">2. 예배와 규례에 대한 태도</h3>
+                        <p class="mb-4">하나님께서 정하신 예배와 규례에 대해 다음과 같은 모든 태도는 죄가 됩니다.</p>
+                        <ul class="list-disc space-y-2">
+                            <li><strong>소홀히 함:</strong> 예배와 규례를 가볍게 여기고 등한시하는 태도.</li>
+                            <li><strong>경멸:</strong> 예배와 규례를 무시하고 멸시하는 태도.</li>
+                            <li><strong>방해 및 반대:</strong> 다른 사람의 예배를 방해하거나, 교회의 예배 질서에 반대하는 행위.</li>
+                        </ul>
+                         <h3 class="text-xl font-semibold mt-6 mb-3">3. 교회의 질서와 결정권</h3>
+                        <p>교회의 예배 시간, 방식 등 공적 예배의 질서에 관한 결정은 교인들의 다수결이나 여론이 아닌, '당회(the Session)'의 권한에 속합니다. 이는 사람의 전통이나 편의가 아닌, 성경의 진리에 따라 주님을 섬길 궁극적인 책임을 리더십이 지기 때문입니다.</p>
+                    </div>
+                    <button class="ask-question-btn mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">이해를 돕는 질문하기</button>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="qa-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold">질문하기</h3>
+                <button id="close-modal-btn" class="text-2xl font-bold">&times;</button>
+            </div>
+            <div id="modal-body">
+                <form id="qa-form">
+                    <div class="mb-4">
+                        <label for="question-input" class="block text-lg font-medium text-gray-700 mb-2">질문을 입력하세요:</label>
+                        <textarea id="question-input" rows="4" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="이 장의 내용과 관련하여 궁금한 점을 질문해보세요..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300">질문 제출</button>
+                </form>
+                <div id="answer-container" class="mt-6 p-4 bg-gray-50 rounded-md border border-gray-200 hidden">
+                    <h4 class="text-xl font-bold mb-2">답변:</h4>
+                    <div id="answer-text" class="prose max-w-none text-lg"></div>
+                </div>
+                 <div id="loading-indicator" class="mt-6 text-center hidden">
+                    <p class="text-lg">답변을 생성 중입니다. 잠시만 기다려주세요...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('qa-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const qaForm = document.getElementById('qa-form');
+            const questionInput = document.getElementById('question-input');
+            const answerContainer = document.getElementById('answer-container');
+            const answerText = document.getElementById('answer-text');
+            const modalTitle = document.getElementById('modal-title');
+            const loadingIndicator = document.getElementById('loading-indicator');
+
+            let currentChapterContext = '';
+            let currentChapterTitle = '';
+
+            document.querySelectorAll('.ask-question-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const section = e.target.closest('.chapter-section');
+                    currentChapterTitle = section.querySelector('h2').textContent;
+                    // 본문 내용을 더 정확하게 수집
+                    const contentDiv = section.querySelector('.prose');
+                    currentChapterContext = contentDiv.innerText || contentDiv.textContent;
+                    
+                    modalTitle.textContent = `${currentChapterTitle} - 질문하기`;
+                    questionInput.value = '';
+                    answerContainer.classList.add('hidden');
+                    loadingIndicator.classList.add('hidden');
+                    modal.classList.remove('hidden');
+                });
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+
+            qaForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const question = questionInput.value.trim();
+                if (!question) {
+                    alert('질문을 입력해주세요.');
+                    return;
+                }
+
+                answerContainer.classList.add('hidden');
+                loadingIndicator.classList.remove('hidden');
+
+                try {
+                    const response = await fetch('/api/ask-gemini', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            context: currentChapterContext,
+                            question: question
+                        }),
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json().catch(() => ({ message: '서버 응답이 올바르지 않습니다.' }));
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.message}`);
+                    }
+
+                    const data = await response.json();
+                    // Gemini API 응답 형식에 맞춰 텍스트를 마크다운처럼 렌더링 (간단한 줄바꿈 처리)
+                    answerText.innerHTML = data.answer.replace(/\n/g, '<br>');
+                    answerContainer.classList.remove('hidden');
+
+                } catch (error) {
+                    console.error('Error fetching answer:', error);
+                    answerText.textContent = '답변을 가져오는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요. 오류: ' + error.message;
+                    answerContainer.classList.remove('hidden');
+                } finally {
+                    loadingIndicator.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
